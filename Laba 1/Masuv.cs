@@ -8,15 +8,14 @@ namespace Laba_1
 {
     class Masuv
     {
-        public int size;
-        public string name;
-
+        protected int size;
+        protected string name;
 
         public int Size
-            {
-                get { return size; }
-                set { size = value; }
-            }
+        {
+            get { return size; }
+            set { size = value; }
+        }
 
         public string Name
         {
@@ -34,16 +33,26 @@ namespace Laba_1
             }
         }
 
+        public void GetName()
+        {
+            Console.WriteLine("Array's name: {0}", Name);
+        }
+
+        public void GetSize()
+        {
+            Console.WriteLine("Array's size: {0}", Size);
+        }
+
         public void Creating(int[] array)
         {
-           array = new int[size];
+            array = new int[size];
         }
 
         public void Generation(int[] array)
-        { 
+        {
             Random rnd = new Random();
 
-            for(int i = 0; i < array.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
                 array[i] = rnd.Next(1, 21);
             }
@@ -62,7 +71,7 @@ namespace Laba_1
             int min = array[0];
             for (int i = 1; i < array.Length; i++)
             {
-                
+
                 if (array[i] > max)
                 {
                     max = array[i];
@@ -75,24 +84,28 @@ namespace Laba_1
                 }
             }
 
-            if (indexMin != array.Length - 1)
-            {
-            temp = array[0];
-            array[0] = min;
-            array[indexMin] = temp;
-            }
 
-            if (indexMax != 0)
-            {
-                tem = array[array.Length - 1];
-                array[array.Length - 1] = max;
-                array[indexMax] = tem;
-            }
+            temp = array[0];
+            array[0] = max;
+            array[indexMax] = temp;
+
+            tem = array[array.Length - 1];
+            array[array.Length - 1] = min;
+            array[indexMin] = tem;
+
 
             Console.WriteLine();
             for (int i = 0; i < array.Length; i++)
                 Console.Write(array[i] + " ");
+            Console.WriteLine();
+        }
 
+        public void ToSquare(int[] array) 
+        {
+            for(int i = 0; i < array.Length; i++)
+            {
+                array[i] *= array[i];
+            }
         }
     }
 }
